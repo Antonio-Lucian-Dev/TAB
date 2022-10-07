@@ -1,0 +1,51 @@
+def partition(array, low, high):
+    # Cautam cel mai din dreapta element ca pivot
+    pivot = array[high]
+
+    # pointer pentru cel mai mare element
+    i = low - 1
+
+    # traversam rin toate elementele
+    # comparam fiecare element cu pivotul
+    for j in range(low, high):
+        if array[j] <= pivot:
+            # Daca elementul mai mic ca pivotul este gasit
+            # il schimb cu elementul mai mare pointerat de i
+            i = i + 1
+
+            # Schimbam elementul de pe i cu elementul de pe j
+            (array[i], array[j]) = (array[j], array[i])
+
+    # Schimbam pivotul cu cel mai mare element specificat de i
+    (array[i + 1], array[high]) = (array[high], array[i + 1])
+
+    # Returneaza pozitia de unde partitia e facuta
+    return i + 1
+
+
+# Functia care face quick sort
+
+def quickSort(array, low, high):
+    if low < high:
+        # Cautam pivotul care
+        # elementul mai mic ca pivot este pe partea stanga
+        # elementul mai mare ca pivot este pe partea dreapta
+        pi = partition(array, low, high)
+
+        # Apelare recursiva pe partea din stanga a pivotului
+        quickSort(array, low, pi - 1)
+
+        # Apelare recursiva pe partea din dreapta a pivotului
+        quickSort(array, pi + 1, high)
+
+
+data = [1, 7, 4, 1, 10, 9, -2]
+print("\n\nArray ne sortat")
+print(data)
+
+size = len(data)
+
+quickSort(data, 0, size - 1)
+
+print('Array sortat in ordine Asc:')
+print(data)
