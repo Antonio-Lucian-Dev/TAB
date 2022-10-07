@@ -1,0 +1,8 @@
+#Bubble sort
+for i in range(0, len(a)):
+    for j in range(1, len(a)):
+        if(a[j] < a[i]):
+            temp = a[i]
+            a[i] = a [j]
+            a[j] = temp
+print("Sortat cu Bubble: \n", a)
